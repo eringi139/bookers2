@@ -5,7 +5,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
     create_table :users do |t|
       ## Database authenticatable
       #サインインのときにnameを使いたい。記述はこれで合ってるのか
-      t.string :name,               null: false, default: ""
+      t.string :name,               
+      null: false, default: ""
       #emailは要らない？
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
