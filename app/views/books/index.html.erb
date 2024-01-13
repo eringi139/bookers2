@@ -1,16 +1,30 @@
 <h2>Book detail</h2>
 
+<div>
+  <h5>name</h5>
+  <%= @books.title %>
+  <h5>introduction</h5>
+  <%= @books.body %>
+
+</div>
+
+
 
 <% @books.each do |book| %>
 <div>
+  <%= link_to books_path(book.user_id) do %>
     <%= image_tag book.get_image %>
+  <% end %>
+    
     <p><%= book.user.name %></p>
     <p><%=link_to book.title, book_path(book.id)%></p>
     <p><%= book.body %></p>
   </div>
   <% end %>
   
+  
   <%= form_with model: @new_book do |f| %>
+  
 <h1>New book</h1>
 
   <h4>Title</h4>
