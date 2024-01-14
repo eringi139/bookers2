@@ -1,17 +1,7 @@
 <h2>Book detail</h2>
 
 <%#一覧画面から同一ページ内で詳細画面に偏移させたいが... %>
-<% @books.each do |book| %>
-<div>
-  <%= link_to books_path(book.user_id) do %>
-  <% end %>
-  <p><%= image_tag 'no_image.jpg' %></p>
-  <p><%= book.user.name %></p>
-  <p><%= book.title %></p>
-  <p><%= book.body %></p>
 
-</div>
-<% end %>
 
 
 
@@ -19,7 +9,7 @@
 <%#一覧画面 %>
 <% @books.each do |book| %>
 <div>
-  <%= link_to books_path(book.user_id) do %>
+  <%= link_to books_path do %>
     <%= image_tag book.get_image %>
   <% end %>
     
