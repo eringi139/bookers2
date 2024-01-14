@@ -1,7 +1,11 @@
 <div>
-  <h5>name</h5>
-  <%= book.title %>
-  <h5>introduction</h5>
-  <%= book.body %>
-
+  <p><%= image_tag 'no_image.jpg' %></p>
+  <p><%= @books.user.name %></p>
+  <p><%= @books.title %></p>
+  <p><%= @books.body %></p>
+  <% if @books.user == current_user %>
+    <%= link_to "Destroy", books_path(@books), method: :delete %>
+  <% end %>
+  
+  
 </div>
