@@ -8,18 +8,19 @@ class BooksController < ApplicationController
     @book = Book.new(books_params)
     @book.user_id = (current_user.id)
     if @book.save
-     flash[:notice] = "Book was successfully created."
+     flash[:notice] = "You have created book successfully."
      redirect_to book_path(@book.id)
     
     else
     @books = Book.all.order(id: :asc)
+    flash[:notice] = "errors prohibited this obj from being saved."
     render :index
    end
    end
 
   def index
     @user = current_user
-    @books = Book.all
+    @books = Book.page(params[:page])
     @book = Book.new
   end
 

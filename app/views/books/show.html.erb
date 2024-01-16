@@ -1,4 +1,7 @@
 <div>
+  <%= flash[:notice] %>
+</div>
+<div>
   <h2>User info</h2>
   <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
   <h4>name</h4>
@@ -15,6 +18,7 @@
   
   <% if @book.user_id == current_user.id %>
   <% end %>
+  
   <%= link_to "Edit", edit_book_path(@book.id) %>
   <%= link_to "Destroy", book_path(@book), method: :delete %>
   

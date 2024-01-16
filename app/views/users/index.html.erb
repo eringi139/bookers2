@@ -11,6 +11,9 @@
   
   </div>
   
+  
+  
+  
   <%#投稿画面 %>
   <%= form_with model: @book do |f| %>
   
@@ -24,4 +27,19 @@
   <%= f.submit 'Create Book' %>
 <% end %>
 
+
+
+<div class= "col-xs-9">
+    <h2>Users</h2>
+    <table class='table'>
+
+    <% @users.each do |users| %>
+    <tr>
+   <th><%= image_tag users.get_profile_image(100,100) %></th>
+   <th><%= users.name %><th>
+   <th><%= link_to "Show",user_path(users.id) %></th>
+   </tr>
+   <% end %>
+   </table>
+  </div>
 
