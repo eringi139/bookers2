@@ -1,4 +1,22 @@
-<h2>Book detail</h2>
+<h2>User info</h2>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+  <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+  <p><%= image_tag @user.get_profile_image(100,100) %></p>
+  <h4>name</h4>
+  <p><%= @user.name %></p>
+  <h4>introduction</h4>
+  <p><%= @user.introduction %></p>
+  
+  <%= render 'list', book: @book, books: @books %>
+  
 
 <%#一覧画面から同一ページ内で詳細画面に偏移させたいが... %>
 
@@ -6,31 +24,7 @@
 
 
 
-<%#一覧画面 %>
-<% @books.each do |book| %>
-<div>
-  <%= link_to books_path do %>
-    <%= image_tag book.get_image %>
-  <% end %>
-    
-    <p><%= book.user.name %></p>
-    <p><%=link_to book.title, book_path(book.id)%></p>
-    <p><%= book.body %></p>
-  </div>
-  <% end %>
-  
-  <%#投稿画面 %>
-  <%= form_with model: @new_book do |f| %>
-  
-<h1>New book</h1>
 
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  
-  <h4>Opinion</h4>
-  <%= f.text_field :body %>
-  <%= f.submit 'Create Book' %>
-<% end %>
   
   
   
