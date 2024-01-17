@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     
     else
     @books = Book.all.order(id: :asc)
-    flash[:notice] = "errors prohibited this obj from being saved."
+    
     render :index
    end
    end
@@ -36,8 +36,16 @@ class BooksController < ApplicationController
   
   def update
     book = Book.find(params[:id])
-    book.update(books_params)
+    if book.update(books_params)
+    flash[:notice] = "You have created book successfully."
     redirect_to book_path(book.id)  
+    
+    else
+    @books = Book.all
+    flash[:notice]= 'errors prohibited this obj from being saved.'
+    render "edit"
+    end
+    
   end
   
   def destroy

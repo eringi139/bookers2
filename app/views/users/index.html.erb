@@ -1,4 +1,5 @@
-<div>
+<div class="box">
+    <div class= "col-md-3">
   <h2>User info</h2>
   <%= image_tag @user.get_profile_image(100,100) %>
   <h4>name</h4>
@@ -24,12 +25,14 @@
   
   <h4>Opinion</h4>
   <%= f.text_field :body %>
+  <nav>
   <%= f.submit 'Create Book' %>
+  </nav>
 <% end %>
 
 
 
-<div class= "col-xs-9">
+<div class= "col-md-8">
     <h2>Users</h2>
     <table class='table'>
 

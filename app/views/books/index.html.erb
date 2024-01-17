@@ -1,3 +1,5 @@
+
+
 <% if @book.errors.any? %>
   <%= @book.errors.count %>errors prohibited this obj from being saved:
   <ul>
@@ -7,6 +9,9 @@
   </ul>
 <% end %>
 
+<div class="box">
+
+ <div class= "col-xs-3">
 <h2>User info</h2>
   <p><%= image_tag @user.get_profile_image(100,100) %></p>
   <h4>name</h4>
@@ -17,7 +22,7 @@
   <%= render 'list', book: @book, books: @books %>
   
 
-<%#一覧画面から同一ページ内で詳細画面に偏移させたいが... %>
+
 
 
 
