@@ -1,40 +1,15 @@
-<div class="box">
-    <div class= "col-md-3">
-  <h2>User info</h2>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <h4>name</h4>
-  <%= @user.name %>
-  <h4>introduction</h4>
-  <%= @user.introduction %>
-  <% if @user == current_user.id %>
-  <% end %>
-   <p><%= link_to "プロフィール編集",edit_user_path(@user.id) %></p>
+  <div class="container px-5 px-sm-0">
+  <div class="row">
+    
+  <%= render 'books/list', book: @book, books: @books %>
   
-  </div>
-  
-  
-  
-  
-  <%#投稿画面 %>
-  <%= form_with model: @book do |f| %>
-  
-<h1>New book</h1>
-
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  
-  <h4>Opinion</h4>
-  <%= f.text_field :body %>
-  <nav>
-  <%= f.submit 'Create Book' %>
-  </nav>
-<% end %>
-
-
-
-<div class= "col-md-8">
+  <div class= "col-md-8 offset-md-1">
     <h2>Users</h2>
     <table class='table'>
+    <tr>
+    <th>Image</th>
+    <th>Name</th>
+    </tr>
 
     <% @users.each do |users| %>
     <tr>
@@ -45,4 +20,5 @@
    <% end %>
    </table>
   </div>
-
+  </div>
+  </div>

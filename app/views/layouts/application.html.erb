@@ -3,42 +3,69 @@
 <html>
 <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     
-    <script src="https://kit.fontawesome.com/caae059452.js" crossorigin="anonymous"></script> 
+
+    <script src="https://kit.fontawesome.com/caae059452.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="navbar navber-expand-lg ">
-    <div class="container">
-      <div class='container navbar-left' >
-        <span>Bookers</span>
-        
-      </nav>
-      <nav>
-        <ul class="nav navbar-nav navbar-right">
+    <header class="shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-dark text-white bg-dark ">
+
+    <span>Bookers</span>
+
+
+    <ul class= "navbar-nav ml-auto" >
       <% if user_signed_in? %>
-    <li>
-      <%= link_to 'Home', books_path %>
+
+    <li><%= link_to @user_path, class:"nav-link text-light" do %>
+          <i class="fas fa-home"></i>Home
+        <% end %>
     </li>
-    <li>
-      <%= link_to 'Users', "/users" %>    
-      </li>
-    <li>
-      <%= link_to "Books", "/books" %>
+    <li><%= link_to users_path, class:"nav-link text-light" do %>
+          <i class="fa-solid fa-link"></i>User
+        <% end %>
     </li>
-    <li>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+    <li><%= link_to books_path, class:"nav-link text-light" do %>
+          <i class="fa-solid fa-user-plus"></i>Books
+         <% end %>
     </li>
-    
+    <li><%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light" do %>
+          <i class="fa-solid fa-right-to-bracket"></i>Log out
+         <% end %>
+    </li>
+
+    <% else %>
+    <li><%= link_to root_path, class:"nav-link text-light" do %>
+          <i class="fa-solid fa-house"></i>Home
+          <% end %>
+    </li>
+    <li><%= link_to about_path, class:"nav-link text-light" do %>
+          <i class="fa-solid fa-link"></i>About
+          <% end %>
+    </li>
+    <li><%= link_to "/users/sign_up", class:"nav-link text-light" do %>
+          <i class="fa-solid fa-user-plus"></i>Sign up
+          <% end %>
+    </li>
+    <li><%= link_to "/users/sign_in", class:"nav-link text-light" do %>
+          <i class="fa-solid fa-right-to-bracket"></i>Log in
+          <% end %>
+    </li>
+
+   
+
     <% end %>
-    
-  </header>
+    </ul>
+    </nav>
+    </div>
+
+   </header>
+
+
   <main>
   <div>
       <% flash.each do |message_type, message| %>
@@ -47,6 +74,7 @@
     </div>
     <%= yield %>
     </main>
+
     <footer>
     <div class='container'>
     <div class='row'>

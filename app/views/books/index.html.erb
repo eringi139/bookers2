@@ -1,5 +1,5 @@
 
-
+<div class="container px-5 px-sm-0">
 <% if @book.errors.any? %>
   <%= @book.errors.count %>errors prohibited this obj from being saved:
   <ul>
@@ -8,19 +8,37 @@
     <% end %>
   </ul>
 <% end %>
+<div class="row">
 
-<div class="box">
+<%= render 'list', book: @book, books: @books %>
+<%#一覧画面 %>
+<div class= "col-md-8 offset-md-1">
+<h2>Books</h2>
+<table class="table">
+<tr>
+<th></th>  
+<th><p>Title</p></th>
+<th><p>Opinion</p></th>
+<th colspan= "3"></th>
+</tr>
 
- <div class= "col-xs-3">
-<h2>User info</h2>
-  <p><%= image_tag @user.get_profile_image(100,100) %></p>
-  <h4>name</h4>
-  <p><%= @user.name %></p>
-  <h4>introduction</h4>
-  <p><%= @user.introduction %></p>
+<% @books.each do |book| %>
+
+
+<tr>
+  <%= link_to books_path do %>
+  <% end %>
+
+  <th><%= image_tag book.user.get_profile_image(100,100) %></th>
+  <th><%=link_to book.title, book_path(book.id)%></th>
+  <th><%= book.body %></th>
+  </tr>
+  <% end %>
   
-  <%= render 'list', book: @book, books: @books %>
-  
+  </table>
+  </div>
+  </div>
+  </div>
 
 
 
@@ -29,8 +47,13 @@
 
 
 
-  
-  
-  
 
-  
+
+
+
+
+
+
+
+
+
